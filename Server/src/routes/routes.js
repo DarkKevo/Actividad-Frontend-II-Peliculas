@@ -1,6 +1,8 @@
 import Express from 'express';
 import { GetMovies } from '../controllers/GET/GetMovies.js';
 import { upload2, uploadFile } from '../controllers/POST/SetImage.js';
+import { upload3, uploadFile2 } from '../controllers/PUT/SetEditMovie.js';
+import { DeleteMovie } from '../controllers/DELETE/DeleteMovie.js';
 
 export const routes = Express.Router();
 
@@ -12,6 +14,8 @@ export const routes = Express.Router();
  *    Movies:
  *       type: object
  *       properties:
+ *         idPelicula:
+ *           type: number
  *         Genero:
  *           type: string
  *           description: Genero de la Pelicula
@@ -101,4 +105,48 @@ routes.get('/GetMovies', GetMovies, (req, res) => {
  */
 routes.post('/NewMovie', upload2, uploadFile, (req, res) => {
   //Creacion de Peliculas
+});
+
+//Documencacion de Edicion de Movie
+/**
+ * @swagger
+ * /EditMovie:
+ *   put:
+ *     summary: Edita una Pelicula
+ *     tags: [Movies]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Movies'
+ *     responses:
+ *       200:
+ *         description: Success Edited Movie!
+ */
+routes.put('/EditMovie', upload3, uploadFile2, (req, res) => {
+  //Edicion de Peliculas
+});
+
+//Documentacion de Elimincacion de Peliculas
+/**
+ * @swagger
+ * /DeleteMovie/{idPelicula}:
+ *   delete:
+ *     summary: Elimina una pelicula
+ *     tags: [Movies]
+ *     parameters:
+ *       - in: path
+ *         name: idPelicula
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Id de la Pelicula
+ *     responses:
+ *       200:
+ *         description: Deleted Movie!
+ */
+routes.delete('/DeleteMovie/:idPelicula', DeleteMovie, (req, res) => {
+  //Eliminacion de Peliculas
 });
