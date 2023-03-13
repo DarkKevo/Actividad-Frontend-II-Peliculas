@@ -56,7 +56,7 @@ export const routes = Express.Router();
  *         Actores_Principales: Leonardo DiCaprio
  *         Directores: Antonio Banderas
  *         Franquicia: Disney
- *         Review: [{username: "John", comment: "A beautifull movie"}]
+ *         Review: [{username: "John", icon: "www.img.com", comment: "A beautifull movie"}]
  */
 
 //Documentacion GetMovies
