@@ -68,7 +68,7 @@ export const routes = Express.Router();
  *     tags: [Movies]
  *     responses:
  *       200:
- *         description: Todos las Peliculas
+ *         description: todas las Peliculas
  *         content:
  *           application/json:
  *             schema:
