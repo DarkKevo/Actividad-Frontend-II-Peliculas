@@ -1,5 +1,6 @@
 import Express from 'express';
 import { GetMovies } from '../controllers/GET/GetMovies.js';
+import { upload2, uploadFile } from '../controllers/POST/SetImage.js';
 
 export const routes = Express.Router();
 
@@ -21,10 +22,10 @@ export const routes = Express.Router();
  *           type: number
  *           description: Contexto de la Pelicula
  *         Imagen:
- *           type: date
- *           description: Nombre de la Imagen
+ *           type: file
+ *           description: Archivo Imagen de la Pelicula
  *         Fecha_Publicacion:
- *           type: string
+ *           type: date
  *           description: Fecha de Publicacion de la Pelicula
  *         Actores_Principales:
  *           type: string
@@ -47,7 +48,6 @@ export const routes = Express.Router();
  *         -Actores_Principales
  *         -Directores
  *         -Franquicia
- *         -Review
  *       example:
  *         Genero: 1
  *         Titulo: El Titanic
@@ -75,8 +75,30 @@ export const routes = Express.Router();
  *               type: array
  *               items:
  *                 $ref: '#/components/schemas/Movies'
- *           
+ *
  */
 routes.get('/GetMovies', GetMovies, (req, res) => {
-    //Obtencion de Peliculas
+  //Obtencion de Peliculas
+});
+
+//Documentacion NewMovie
+/**
+ * @swagger
+ * /NewMovie:
+ *   post:
+ *     summary: Crea una nueva pelicula
+ *     tags: [Movies]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Movies'
+ *     responses:
+ *       200:
+ *         description: Success New Movie!
+ */
+routes.post('/NewMovie', upload2, uploadFile, (req, res) => {
+  //Creacion de Peliculas
 });
