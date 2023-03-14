@@ -1,4 +1,6 @@
 import mysql from 'mysql2';
+import jwt from 'jsonwebtoken';
+import { token as jwt_hash } from '../../index.js';
 import { host, port, username, password } from '../config/config.js';
 import bcrypt from 'bcrypt';
 

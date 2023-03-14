@@ -71,6 +71,16 @@ CREATE TABLE IF NOT EXISTS `PeliculasBD`.`Administradores` (
   PRIMARY KEY (`idAdministradores`))
 ENGINE = InnoDB;
 
+INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Accion');
+INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Drama');
+INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Terror');
+INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Suspenso');
+INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Comedia');
+INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Drama');
+INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Fantasia');
+INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Musical');
+INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Ciencia-Ficcion');
+INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Documental');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
