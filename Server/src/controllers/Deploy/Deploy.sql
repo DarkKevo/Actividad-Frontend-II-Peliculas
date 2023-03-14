@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `PeliculasBD`.`Peliculas` (
   `idPelicula` INT NOT NULL AUTO_INCREMENT,
   `Genero` INT NOT NULL,
   `Titulo` VARCHAR(105) NOT NULL,
-  `Sinopsis` VARCHAR(500) NOT NULL,
+  `Sinopsis` VARCHAR(10000) NOT NULL,
   `Imagen` VARCHAR(45) NOT NULL,
   `Fecha_Publicacion` DATE NOT NULL,
   `Actores_Principales` VARCHAR(100) NOT NULL,
@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS `PeliculasBD`.`Peliculas` (
   CONSTRAINT `fk_generos`
     FOREIGN KEY (`Genero`)
     REFERENCES `PeliculasBD`.`Genero` (`idGenero`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
