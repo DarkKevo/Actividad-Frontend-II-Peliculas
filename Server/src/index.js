@@ -16,6 +16,9 @@ import SwaggerJsDoc from 'swagger-jsdoc';
 //Salt
 export const SaltRounds = process.env.GENSALT;
 
+//Token
+export const token = process.env.TOKEN;
+
 //Password
 export const Password = process.env.ADMINISTRATOR_AUTORIZATION;
 

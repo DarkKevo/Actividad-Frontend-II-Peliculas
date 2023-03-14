@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS `PeliculasBD`.`Peliculas` (
   CONSTRAINT `fk_generos`
     FOREIGN KEY (`Genero`)
     REFERENCES `PeliculasBD`.`Genero` (`idGenero`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 

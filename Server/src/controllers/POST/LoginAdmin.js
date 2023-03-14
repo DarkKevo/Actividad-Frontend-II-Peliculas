@@ -1,6 +1,8 @@
 import mysql from 'mysql2';
+import jwt from 'jsonwebtoken';
 import { host, port, username, password } from '../config/config.js';
 import bcrypt from 'bcrypt';
+import { token as jwt_hash } from '../../index.js';
 
 export const LoginAdmin = (req, res) => {
   var conexion = mysql.createConnection({
@@ -34,11 +36,12 @@ export const LoginAdmin = (req, res) => {
         return false;
       } else {
         bcrypt.compare(clave, results[0].clave).then(function (result) {
-          console.log(result)
+          console.log(result);
           if (result == true) {
-            res.send(true);
+            let token = jwt.sign({ nombre: nombre, exp: Date.now() + 60 * 50000 }, jwt_hash);
+            res.json({ token: token, status: true, icon: results[0].icon, id: results[0].idAdministradores });
           } else {
-            res.send(false);
+            res.json({ status: false, token: null });
           }
         });
       }

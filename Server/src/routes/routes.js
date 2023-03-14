@@ -8,6 +8,7 @@ import { CreateUser } from '../controllers/POST/CreateUser.js';
 import { LoginUser } from '../controllers/POST/LoginUser.js';
 import { CreateAdmin } from '../controllers/POST/CreateAdmin.js';
 import { LoginAdmin } from '../controllers/POST/LoginAdmin.js'
+import { NewComentary } from '../controllers/PUT/NewComentary.js';
 
 export const routes = Express.Router();
 
@@ -125,6 +126,36 @@ export const routes = Express.Router();
  *         clave: my-secret-password-encrypted
  *         icon: www.my-logo-user.
  *         developer_password: my-secret-developers-administrator
+ */
+
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *    Comentarios:
+ *       type: object
+ *       properties:
+ *         nombre:
+ *           type: string
+ *           description: Nombre del Usuario
+ *         icon:
+ *           type: string
+ *           description: Icono del Usuario
+ *         comentary:
+ *           type: string
+ *           description: Comentario
+ *         idPelicula:
+ *           type: number
+ *           description: Id de la Pelicula
+ *       required:
+ *         -nombre
+ *         -icon
+ *         -comentary
+ *       example:
+ *         nombre: DarkKevo
+ *         icon: www.my-logo-user.
+ *         comentary: A Great Movie
+ *         idPelicula: 1
  */
 
 //Documentacion GetMovies
@@ -323,4 +354,26 @@ routes.post('/CreateAdmin', CreateAdmin, (req, res) => {
  */
 routes.post('/LoginAdmin', LoginAdmin, (req, res) => {
   //Login de Administradores
+})
+
+//Documentacion Comentarios o Review
+/**
+ * @swagger
+ * /NewComentary:
+ *   put:
+ *     summary: Agrega un Comentario
+ *     tags: [Review]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Comentarios'
+ *     responses:
+ *       200:
+ *         description: Success Add Comentary!
+ */
+routes.put('/NewComentary', NewComentary, (req, res) => {
+  //Comentarios
 })
