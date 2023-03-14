@@ -1,32 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import{Route, Routes} from 'react-router-dom'
+import Nav from './components/Nav'
+import Inicio from './components/Inicio'
+import Pelicula from './components/Pelicula'
+import InicioS from './components/InicioS'
+import Registro from './components/Registro'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+        <Route path='/' element={<Nav/>} >
+          <Route path='/inicio' element={<Inicio/>} />
+          <Route path='/movie/:id' element={<Pelicula/>} />
+        </Route>
+        <Route path='/sesion' element={<InicioS/>}/>
+        <Route path='/registro' element={<Registro/>}/>
+      </Routes>
     </div>
   )
 }
