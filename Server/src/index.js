@@ -3,6 +3,8 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import { routes } from './routes/routes.js';
 import path from 'path';
+import dotenv from 'dotenv';
+dotenv.config({path: './.env'})
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,6 +12,9 @@ const __dirname = path.dirname(__filename);
 //Swagger API
 import SwaggerUI from 'swagger-ui-express';
 import SwaggerJsDoc from 'swagger-jsdoc';
+
+//Salt
+export const SaltRounds = process.env.GENSALT;
 
 const swagerSpect = {
   definition: {
@@ -33,7 +38,7 @@ import './controllers/Deploy/Deploy.js';
 const app = Express();
 
 //Many Config
-let port = 3000;
+let port = process.env.PORT;
 
 //Use APP
 app.use(cors());
@@ -43,7 +48,7 @@ app.use('/', routes);
 app.use('/Documentation', SwaggerUI.serve, SwaggerUI.setup(SwaggerJsDoc(swagerSpect)));
 
 //APP set
-app.set('port', process.env.PORT || port);
+app.set('port', port);
 
 app.listen(app.get('port'), () => {
   console.log(`[Running] - PORT: ${port}`);
