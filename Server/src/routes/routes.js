@@ -7,10 +7,22 @@ import { GetUsers } from '../controllers/GET/GetUsers.js';
 import { CreateUser } from '../controllers/POST/CreateUser.js';
 import { LoginUser } from '../controllers/POST/LoginUser.js';
 import { CreateAdmin } from '../controllers/POST/CreateAdmin.js';
-import { LoginAdmin } from '../controllers/POST/LoginAdmin.js'
+import { LoginAdmin } from '../controllers/POST/LoginAdmin.js';
 import { NewComentary } from '../controllers/PUT/NewComentary.js';
+import { VerifyToken } from '../controllers/Security/VerifyToken.js';
 
 export const routes = Express.Router();
+
+//JWT
+/**
+ * @swagger
+ * components:
+ *   securitySchemes:
+ *     bearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
+ */
 
 //Documentacion de Schema de Movies
 /**
@@ -194,11 +206,13 @@ routes.get('/GetMovies', GetMovies, (req, res) => {
  *           schema:
  *             type: object
  *             $ref: '#/components/schemas/Movies'
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Success New Movie!
  */
-routes.post('/NewMovie', upload2, uploadFile, (req, res) => {
+routes.post('/NewMovie', VerifyToken, upload2, uploadFile, (req, res) => {
   //Creacion de Peliculas
 });
 
@@ -216,15 +230,17 @@ routes.post('/NewMovie', upload2, uploadFile, (req, res) => {
  *           schema:
  *             type: object
  *             $ref: '#/components/schemas/Movies'
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Success Edited Movie!
  */
-routes.put('/EditMovie', upload3, uploadFile2, (req, res) => {
+routes.put('/EditMovie', VerifyToken, upload3, uploadFile2, (req, res) => {
   //Edicion de Peliculas
 });
 
-//Documentacion de Elimincacion de Peliculas
+//Documentacion de Eliminacion de Peliculas
 /**
  * @swagger
  * /DeleteMovie/{idPelicula}:
@@ -238,11 +254,13 @@ routes.put('/EditMovie', upload3, uploadFile2, (req, res) => {
  *           type: string
  *         required: true
  *         description: Id de la Pelicula
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Deleted Movie!
  */
-routes.delete('/DeleteMovie/:idPelicula', DeleteMovie, (req, res) => {
+routes.delete('/DeleteMovie/:idPelicula', VerifyToken, DeleteMovie, (req, res) => {
   //Eliminacion de Peliculas
 });
 
@@ -354,7 +372,7 @@ routes.post('/CreateAdmin', CreateAdmin, (req, res) => {
  */
 routes.post('/LoginAdmin', LoginAdmin, (req, res) => {
   //Login de Administradores
-})
+});
 
 //Documentacion Comentarios o Review
 /**
@@ -370,10 +388,12 @@ routes.post('/LoginAdmin', LoginAdmin, (req, res) => {
  *           schema:
  *             type: object
  *             $ref: '#/components/schemas/Comentarios'
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Success Add Comentary!
  */
-routes.put('/NewComentary', NewComentary, (req, res) => {
+routes.put('/NewComentary', VerifyToken, NewComentary, (req, res) => {
   //Comentarios
-})
+});
