@@ -1,7 +1,7 @@
 import{Outlet}from 'react-router-dom'
 function Nav(){
     return(
-        <div>
+        <div className='bg-red-300'>
             holi
             <Outlet/>
         </div>
