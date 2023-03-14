@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import { routes } from './routes/routes.js';
 import path from 'path';
 import dotenv from 'dotenv';
-dotenv.config({path: './.env'})
+dotenv.config({ path: './.env' });
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,6 +15,9 @@ import SwaggerJsDoc from 'swagger-jsdoc';
 
 //Salt
 export const SaltRounds = process.env.GENSALT;
+
+//Password
+export const Password = process.env.ADMINISTRATOR_AUTORIZATION;
 
 const swagerSpect = {
   definition: {

@@ -5,7 +5,9 @@ import { upload3, uploadFile2 } from '../controllers/PUT/SetEditMovie.js';
 import { DeleteMovie } from '../controllers/DELETE/DeleteMovie.js';
 import { GetUsers } from '../controllers/GET/GetUsers.js';
 import { CreateUser } from '../controllers/POST/CreateUser.js';
-import { LoginUser } from '../controllers/GET/LoginUser.js';
+import { LoginUser } from '../controllers/POST/LoginUser.js';
+import { CreateAdmin } from '../controllers/POST/CreateAdmin.js';
+import { LoginAdmin } from '../controllers/POST/LoginAdmin.js'
 
 export const routes = Express.Router();
 
@@ -91,6 +93,38 @@ export const routes = Express.Router();
  *         nombre: DarkKevo
  *         clave: my-secret-password-encrypted
  *         icon: www.my-logo-user.
+ */
+
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *    Administradores:
+ *       type: object
+ *       properties:
+ *         idAdministradores:
+ *           type: number
+ *         nombre:
+ *           type: string
+ *           description: Nombre del Usuario
+ *         clave:
+ *           type: string
+ *           description: Clave del Usuario
+ *         icon:
+ *           type: string
+ *           description: Icono del Usuario
+ *         developer_password:
+ *           type: string
+ *           description: Clave Especial de Creacion de Usuario
+ *       required:
+ *         -nombre
+ *         -clave
+ *         -developer_password
+ *       example:
+ *         nombre: DarkKevo
+ *         clave: my-secret-password-encrypted
+ *         icon: www.my-logo-user.
+ *         developer_password: my-secret-developers-administrator
  */
 
 //Documentacion GetMovies
@@ -246,3 +280,47 @@ routes.post('/CreateUser', CreateUser, (req, res) => {
 routes.post('/LoginUser', LoginUser, (req, res) => {
   //Iniciar Sesion
 });
+
+//Documentacion Creacion de Administradores
+/**
+ * @swagger
+ * /CreateAdmin:
+ *   post:
+ *     summary: Crear Administrador
+ *     tags: [Admins]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Administradores'
+ *     responses:
+ *       200:
+ *         description: Success New Administrador!
+ */
+routes.post('/CreateAdmin', CreateAdmin, (req, res) => {
+  //Creacion de Admin
+});
+
+//Documentacion Login de Administradores
+/**
+ * @swagger
+ * /LoginAdmin:
+ *   post:
+ *     summary: Login Administrador
+ *     tags: [Admins]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             $ref: '#/components/schemas/Administradores'
+ *     responses:
+ *       200:
+ *         description: Success Login Administrador!
+ */
+routes.post('/LoginAdmin', LoginAdmin, (req, res) => {
+  //Login de Administradores
+})

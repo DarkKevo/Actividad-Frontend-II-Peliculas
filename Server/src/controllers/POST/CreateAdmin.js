@@ -2,8 +2,9 @@ import mysql from 'mysql2';
 import bcrypt from 'bcrypt';
 import { host, port, username, password } from '../config/config.js';
 import { SaltRounds } from '../../index.js';
+import { Password } from '../../index.js';
 
-export const CreateUser = (req, res) => {
+export const CreateAdmin = (req, res) => {
   var conexion = mysql.createConnection({
     host: host,
     port: port,
@@ -22,38 +23,28 @@ export const CreateUser = (req, res) => {
     console.log('Contectado con Exito');
   });
 
-  const { nombre, clave, icon } = req.body;
+  const { nombre, clave, icon, developer_password } = req.body;
 
   var Encripted_password = bcrypt.hashSync(clave, parseInt(SaltRounds));
 
-  let verify = 'SELECT * FROM peliculasbd.usuarios where `nombre`= ' + `'${nombre}'`;
-
-  let query = 'INSERT INTO `peliculasbd`.`usuarios` (`nombre`, `clave`, `icon`) VALUES ';
+  let query = 'INSERT INTO `peliculasbd`.`administradores` (`nombre`, `clave`, `icon`) VALUES ';
   query += `('${nombre}', '${Encripted_password}', '${icon}');
   `;
 
-  conexion.query(verify, (err, result) => {
-    if (err) {
-      console.log(err);
-      conexion.end();
-      res.send(false);
-    } else {
-      if (result.length == 0) {
-        conexion.query(query, (err, results) => {
-          if (err) {
-            console.log(err);
-            conexion.end();
-            res.send(false);
-          } else {
-            console.log(results);
-            conexion.end();
-            res.send(true);
-          }
-        });
-      } else {
+  if (developer_password == Password) {
+    conexion.query(query, (err, results) => {
+      if (err) {
+        console.log(err);
         conexion.end();
         res.send(false);
+      } else {
+        console.log(results);
+        conexion.end();
+        res.send(true);
       }
-    }
-  });
+    });
+  } else {
+    console.log('Usuario no permitido')
+    res.send(false)
+  }
 };
