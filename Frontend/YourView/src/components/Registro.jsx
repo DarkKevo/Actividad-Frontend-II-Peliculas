@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Registro() {
   const [user, setUser] = useState("");
@@ -9,7 +10,7 @@ function Registro() {
           action=""
           method="post"
         >
-            <h1>Registro</h1>
+            <h1 className="text-3xl">Registro</h1>
           <select
           className="p-3  bg-white rounded-lg text-black border-azul border-4 w-full"
             name=""
@@ -26,10 +27,12 @@ function Registro() {
           <input className="p-3 bg-white rounded-lg border-azul border-4 w-full" type="email" name="" id="" placeholder="Ingrese su Correo Electronico" />
           <input className="p-3 bg-white rounded-lg border-azul border-4 w-full" type="password" name="" id="" placeholder="Ingrese una contraseña" />
           <div className={user == 'Administrador' ? 'flex flex-col gap-3' : 'hidden'}>
-            <p>ingrese su clave de Administrador</p>
+            <p className="text-sm">Ingrese su clave de Administrador</p>
             <input className="p-3 bg-white rounded-lg border-azul border-4 w-full" type="text" name="" id="" placeholder="ingrese clave" />
           </div>
           <button className="p-3 rounded-lg border-azul bg-white border-4" type="submit"><span>Registrarme</span></button>
+          <p className="text-sm">Ya tienes una cuenta? Inicia Sesión <Link className="font-bold" to={'/sesion'}>aqui</Link>
+            </p>
         </form> 
       </div>
   );

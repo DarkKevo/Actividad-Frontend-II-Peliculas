@@ -24,7 +24,7 @@ function App() {
         <Route path='/sesion' element={<InicioS/>}/>
         <Route path='/registro' element={<Registro/>}/>
       </Routes>
-      <div onClick={() => setDarkToggle(!darkToggle)} className='w-1/6 absolute bottom-0 right-0 rounded-full bg-red-100'>
+      <div onClick={() => setDarkToggle(!darkToggle)} className='w-1/6 p-5 absolute bottom-5 right-5 rounded-full flex items-center justify-center bg-azul text-white'>
       <FaMoon/>
       </div>
     </div>
