@@ -61,6 +61,9 @@ export const routes = Express.Router();
  *         Review:
  *           type: json
  *           description: Opiniones de la Pelicula
+ *         URL_pelicula:
+ *           type: string
+ *           description: Url del Video de la Pelicula
  *       required:
  *         -Genero
  *         -Titulo
@@ -70,6 +73,7 @@ export const routes = Express.Router();
  *         -Actores_Principales
  *         -Directores
  *         -Franquicia
+ *         -URL_pelicula
  *       example:
  *         Genero: 1
  *         Titulo: El Titanic

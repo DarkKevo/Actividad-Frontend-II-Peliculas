@@ -20,7 +20,7 @@ const upload = multer({ storage });
 export const upload3 = upload.single('Imagen');
 
 export const uploadFile2 = (req, res) => {
-  const { Genero, Titulo, Sinopsis, Fecha_Publicacion, Actores_Principales, Directores, Franquicia, idPelicula } = req.body;
-  EditMovie(Genero, Titulo, Sinopsis, imagen_name, Fecha_Publicacion, Actores_Principales, Directores, Franquicia, idPelicula);
+  const { Genero, Titulo, Sinopsis, Fecha_Publicacion, Actores_Principales, Directores, Franquicia, idPelicula, URL_pelicula } = req.body;
+  EditMovie(Genero, Titulo, Sinopsis, imagen_name, Fecha_Publicacion, Actores_Principales, Directores, Franquicia, idPelicula, URL_pelicula);
   res.json({ message: 'Enviado' });
 };

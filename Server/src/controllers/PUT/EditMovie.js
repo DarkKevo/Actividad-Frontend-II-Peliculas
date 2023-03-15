@@ -3,7 +3,18 @@ import path from 'path';
 import mysql from 'mysql2';
 import { host, port, username, password } from '../config/config.js';
 
-export const EditMovie = (Genero, Titulo, Sinopsis, imagen_name, Fecha_Publicacion, Actores_Principales, Directores, Franquicia, idPelicula) => {
+export const EditMovie = (
+  Genero,
+  Titulo,
+  Sinopsis,
+  imagen_name,
+  Fecha_Publicacion,
+  Actores_Principales,
+  Directores,
+  Franquicia,
+  idPelicula,
+  URL_pelicula
+) => {
   var conexion = mysql.createConnection({
     host: host,
     port: port,
@@ -42,6 +53,8 @@ export const EditMovie = (Genero, Titulo, Sinopsis, imagen_name, Fecha_Publicaci
     `'${Directores}'` +
     ', `Franquicia`= ' +
     `'${Franquicia}'` +
+    ', `URL_pelicula`= ' +
+    `'${URL_pelicula}'` +
     ' where `idPelicula` =' +
     `'${idPelicula}'`;
 
