@@ -32,8 +32,8 @@ export const LoginUser = (req, res) => {
       console.log(err);
       res.send(false);
     } else {
-      if (results == []) {
-        return false;
+      if (results.length == 0) {
+        res.json({message: 'No Existe', status: false})
       } else {
         bcrypt.compare(clave, results[0].clave).then(function (result) {
           console.log(result);

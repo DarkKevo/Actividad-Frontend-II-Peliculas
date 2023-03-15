@@ -8,8 +8,8 @@ export const VerifyToken = (req, res, next) => {
     if (Date.now() > payload.exp) {
       res.json({ message: 'expired token', status: false });
     } else {
-      res.json({ status: true });
       next();
+      return;
     }
   } catch (error) {
     res.json({ message: 'no token provided', status: false });
