@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `PeliculasBD`.`Peliculas` (
   `Genero` INT NOT NULL,
   `Titulo` VARCHAR(105) NOT NULL,
   `Sinopsis` VARCHAR(10000) NOT NULL,
+  `URL_pelicula` TEXT NOT NULL,
   `Imagen` VARCHAR(45) NOT NULL,
   `Fecha_Publicacion` DATE NOT NULL,
   `Actores_Principales` VARCHAR(100) NOT NULL,

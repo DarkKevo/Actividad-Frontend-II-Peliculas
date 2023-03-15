@@ -61,6 +61,9 @@ export const routes = Express.Router();
  *         Review:
  *           type: json
  *           description: Opiniones de la Pelicula
+ *         URL_pelicula:
+ *           type: string
+ *           description: Url del Video de la Pelicula
  *       required:
  *         -Genero
  *         -Titulo
@@ -70,6 +73,7 @@ export const routes = Express.Router();
  *         -Actores_Principales
  *         -Directores
  *         -Franquicia
+ *         -URL_pelicula
  *       example:
  *         Genero: 1
  *         Titulo: El Titanic
@@ -79,6 +83,7 @@ export const routes = Express.Router();
  *         Directores: Antonio Banderas
  *         Franquicia: Disney
  *         Review: [{username: "John", icon: "www.img.com", comment: "A beautifull movie"}]
+ *         URL_pelicula: www.my-example-movie.com
  */
 
 /**

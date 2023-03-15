@@ -1,7 +1,7 @@
 import mysql from 'mysql2';
 import { host, port, username, password } from '../config/config.js';
 
-export const NewMovie = (Genero, Titulo, Sinopsis, Imagen, Fecha_Publicacion, Actores_Principales, Directores, Franquicia) => {
+export const NewMovie = (Genero, Titulo, Sinopsis, Imagen, Fecha_Publicacion, Actores_Principales, Directores, Franquicia, URL_pelicula) => {
   var conexion = mysql.createConnection({
     host: host,
     port: port,
@@ -21,9 +21,9 @@ export const NewMovie = (Genero, Titulo, Sinopsis, Imagen, Fecha_Publicacion, Ac
   });
 
   let query =
-    'INSERT INTO `peliculasbd`.`peliculas` (`Genero`, `Titulo`, `Sinopsis`, `Imagen`, `Fecha_Publicacion`, `Actores_Principales`, `Directores`, `Franquicia`) VALUES ';
+    'INSERT INTO `peliculasbd`.`peliculas` (`Genero`, `Titulo`, `Sinopsis`, `Imagen`, `Fecha_Publicacion`, `Actores_Principales`, `Directores`, `Franquicia`,`URL_pelicula`) VALUES ';
 
-  query += `('${Genero}', '${Titulo}', '${Sinopsis}', '${Imagen}', '${Fecha_Publicacion}', '${Actores_Principales}', '${Directores}', '${Franquicia}');`;
+  query += `('${Genero}', '${Titulo}', '${Sinopsis}', '${Imagen}', '${Fecha_Publicacion}', '${Actores_Principales}', '${Directores}', '${Franquicia}', '${URL_pelicula}');`;
 
   conexion.query(query, (err, results) => {
     if (err) {
