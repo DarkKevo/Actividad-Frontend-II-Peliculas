@@ -9,4 +9,4 @@ port = "3306";
 username = "root";
 /* password = 'Darkkevo07'; */
 /* password = 'victoria123'; */
-/* password = "AdminUser"; */
+password = "AdminUser";
