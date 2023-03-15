@@ -1,6 +1,6 @@
 import{Route, Routes} from 'react-router-dom'
 import { useState } from 'react';
-import {FaMoon} from "react-icons/fa";
+import {FaMoon,FaRegSun} from "react-icons/fa";
 import Nav from './components/Nav'
 import Inicio from './components/Inicio'
 import Pelicula from './components/Pelicula'
@@ -26,8 +26,9 @@ function App() {
         </Route>
         <Route path="*" element={<GenericNotFound />} />
       </Routes>
-      <div onClick={() => setDarkToggle(!darkToggle)} className='w-1/6 p-5 fixed bottom-5 right-5 rounded-full flex items-center justify-center bg-azul text-white'>
-      <FaMoon/>
+      <div onClick={() => setDarkToggle(!darkToggle)} className='w-1/6 p-3 fixed bottom-5 right-5 rounded-full flex items-center justify-center bg-azul transition-all duration-400 dark:bg-oscuro dark:border-2 border-salmon text-4xl text-white'>
+      <FaMoon className='dark:hidden'/>
+      <FaRegSun className='hidden dark:block'/>
       </div>
     </div>
   )

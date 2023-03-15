@@ -1,5 +1,4 @@
 function Logo({tamaño}) {
-  console.log(tamaño);
   return(
     <h1
     style={{ textShadow: "3px 2px 1px #58287F" }}
