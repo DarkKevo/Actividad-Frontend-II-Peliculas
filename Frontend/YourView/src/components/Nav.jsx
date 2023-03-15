@@ -15,7 +15,7 @@ function Nav(){
         <div className='min-h-screen'>
             <header className="flex justify-between items-center p-5 bg-salmon dark:bg-oscuro">
                 <Logo tamaño={'text-3xl'}/>
-                <ul className={toggleMenu + " absolute transition-all duration-500 bg-salmon text-3xl top-0 h-full w-full flex flex-col items-center justify-center gap-10"}>
+                <ul className={toggleMenu + " absolute transition-all duration-500 bg-salmon dark:bg-oscuro dark:text-white text-3xl top-0 h-full w-full flex flex-col items-center justify-center gap-10"}>
                 <FaTimes
                 onClick={cambio}
                 className="text-3xl absolute top-8 right-8"
