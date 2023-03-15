@@ -83,6 +83,7 @@ export const routes = Express.Router();
  *         Directores: Antonio Banderas
  *         Franquicia: Disney
  *         Review: [{username: "John", icon: "www.img.com", comment: "A beautifull movie"}]
+ *         URL_pelicula: www.my-example-movie.com
  */
 
 /**
