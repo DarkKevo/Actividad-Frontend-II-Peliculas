@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Reviews from "./Reviews";
+import Editar from "./Edit";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 function Pelicula() {
   return (
@@ -10,9 +11,7 @@ function Pelicula() {
         alt=""
       />
       <div className="flex justify-end p-2 gap-5 text-2xl">
-        <Link>
-          <FaEdit />
-        </Link>
+        <Editar/>
         <Link>
           <FaTrashAlt />
         </Link>
