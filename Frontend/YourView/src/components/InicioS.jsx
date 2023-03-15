@@ -1,8 +1,10 @@
+import Logo from "./Logo";
 import { Link } from "react-router-dom";
 
 function InicioS() {
   return (
-    <div className="min-h-screen flex dark:bg-black items-center justify-center bg-salmon p-5 font-Source text-black">
+    <div className="min-h-screen flex flex-col gap-10 dark:bg-black items-center justify-center bg-salmon p-5 font-Source text-black">
+      < Logo tamaño={'text-5xl'} />
       <form
         className="p-5 bg-salmon border-4 border-azul  flex flex-col items-center justify-center gap-5 rounded-md text-xl"
         action=""

@@ -1,10 +1,12 @@
 import { useState } from "react";
+import Logo from "./Logo";
 import { Link } from "react-router-dom";
 
 function Registro() {
   const [user, setUser] = useState("");
   return (
-    <div className="min-h-screen flex dark:bg-black items-center justify-center bg-salmon p-5 font-Source text-black">
+    <div className="min-h-screen flex flex-col gap-10 dark:bg-black items-center justify-center bg-salmon p-5 font-Source text-black">
+        < Logo tamaño={'text-5xl'} />
         <form
           className="p-5 bg-salmon border-4 border-azul  flex flex-col items-center justify-center gap-5 rounded-md text-xl"
           action=""
@@ -31,7 +33,7 @@ function Registro() {
             <input className="p-3 bg-white rounded-lg border-azul border-4 w-full" type="text" name="" id="" placeholder="ingrese clave" />
           </div>
           <button className="p-3 rounded-lg border-azul bg-white border-4" type="submit"><span>Registrarme</span></button>
-          <p className="text-sm">Ya tienes una cuenta? Inicia Sesión <Link className="font-bold" to={'/sesion'}>aqui</Link>
+          <p className="text-sm">Ya tienes una cuenta? Inicia Sesión <Link className="font-bold" to={'/'}>aqui</Link>
             </p>
         </form> 
       </div>

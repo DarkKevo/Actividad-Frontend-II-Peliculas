@@ -14,19 +14,19 @@ function App() {
   const [darkToggle, setDarkToggle] = useState(false)
 
   return (
-    <div className={`min-h-scree ${
+    <div className={`min-h-scree font-Source ${
       darkToggle && 'dark'
     }`}>
       <Routes>
+        <Route path='/' element={<InicioS/>}/>
+        <Route path='/registro' element={<Registro/>}/>
         <Route path='/' element={<Nav/>} >
           <Route path='/inicio' element={<Inicio/>} />
           <Route path='/movie/:id' element={<Pelicula/>} />
         </Route>
-        <Route path='/sesion' element={<InicioS/>}/>
-        <Route path='/registro' element={<Registro/>}/>
         <Route path="*" element={<GenericNotFound />} />
       </Routes>
-      <div onClick={() => setDarkToggle(!darkToggle)} className='w-1/6 p-5 absolute bottom-5 right-5 rounded-full flex items-center justify-center bg-azul text-white'>
+      <div onClick={() => setDarkToggle(!darkToggle)} className='w-1/6 p-5 fixed bottom-5 right-5 rounded-full flex items-center justify-center bg-azul text-white'>
       <FaMoon/>
       </div>
     </div>
