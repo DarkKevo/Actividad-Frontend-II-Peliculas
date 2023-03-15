@@ -8,7 +8,7 @@ function Editar() {
     <div>
       <FaEdit
         onClick={() => {
-          setShow("absolute");
+          setShow("fixed");
         }}
       />
       {/* modal */}
