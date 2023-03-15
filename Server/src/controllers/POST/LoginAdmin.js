@@ -32,7 +32,7 @@ export const LoginAdmin = (req, res) => {
       console.log(err);
       res.send(false);
     } else {
-      if (results == []) {
+      if (results.length == 0) {
         return false;
       } else {
         bcrypt.compare(clave, results[0].clave).then(function (result) {
