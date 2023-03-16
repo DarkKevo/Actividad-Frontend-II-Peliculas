@@ -8,14 +8,23 @@ function InicioS() {
   const [clave, setClave] = useState("");
   function sesion(nombre, clave) {
     axios
-      .post("http://localhost:3000/NewMovie", {
+      .post("http://localhost:3000/LoginUser", {
         nombre: nombre,
         clave: clave,
       })
       .then((response) => {
-        console.log(response.data);
-        window.location.href = "/inicio";
+        if(response.data.status==false){
+          console.log('PAGUE VACUNA')
+        }else{
+          console.log(response.data);
+          localStorage.setItem(
+            "currentUser",
+            JSON.stringify({ nombre:response.data.nombre,  icon:response.data.icon, token:response.data.token})
+          );
+          window.location.href = "/inicio";
+        }
       })
+
       .catch((error) => console.log(error));
   }
   const handleSubmit =(e) => {
@@ -51,6 +60,7 @@ function InicioS() {
           className="p-3 bg-white rounded-lg border-azul border-4 w-full"
           type="password"
           placeholder="Ingrese una contraseña"
+          required
         />
         <button
           className="p-3 px-10 rounded-lg border-azul bg-white border-4"

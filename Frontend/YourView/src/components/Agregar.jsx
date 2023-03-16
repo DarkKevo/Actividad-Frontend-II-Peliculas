@@ -3,10 +3,10 @@ import { useState } from "react";
 import axios from 'axios'
 function Agregar() {
   const [show, setShow] = useState("hidden");
-  const [Genero, setGenero]= useState('')
-  const [Titulo, setTitulo]=useState('')
-  const [Sinopsis,setSinopsis]=useState('')
   const[Imagen,setImagen]=useState('')
+  const [Titulo, setTitulo]=useState('')
+  const [Genero, setGenero]= useState('')
+  const [Sinopsis,setSinopsis]=useState('')
   const[Fecha_Publicacion, setFecha_Publicacion]=useState('')
   const[Actores_Principales, setActores_Principales]=useState('')
   const[Directores, setDirectores]=useState('')
@@ -14,14 +14,30 @@ function Agregar() {
 
   let botonesClass = "w-full p-2 rounded-lg border-2 border-azul";
   function aggCard(Genero,Titulo,Sinopsis,Imagen,Fecha_Publicacion,Actores_Principales,Directores,Franquicia){
-    axios.post('http://localhost:3000/LoginUser',{
+    axios.post('http://localhost:3000/NewMovie',{
       Genero,
       Titulo,
       Sinopsis,
       Imagen,
       Fecha_Publicacion,
-      
-    })
+      Actores_Principales,
+      Directores,
+      Franquicia
+    }).then((response)=>{
+      console.log('Pelicula agregada')
+    }).catch((error)=>console.log(error))
+  }
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    aggCard(Genero,Titulo,Sinopsis,Imagen,Fecha_Publicacion,Actores_Principales,Directores,Franquicia)
+    setGenero('')
+    setTitulo('')
+    setSinopsis('')
+    setImagen('')
+    setFecha_Publicacion('')
+    setActores_Principales('')
+    setDirectores('')
+    setFranquicia('')
   }
   return (
     <div className="dark:text-gray-300">
@@ -40,53 +56,60 @@ function Agregar() {
           Agregar Pelicula
         </div>
         <div className="h-full">
-          <form className="flex flex-col gap-2 p-3" action="" required>
+          <form className="flex flex-col gap-2 p-3" onSubmit={handleSubmit} method='post' required>
             <input
               className={botonesClass}
               type="file"
-              
+              onChange={(e)=> setImagen(e.target.value)}
               required
             />
             <input
               className={botonesClass}
               type="text"
-              
+              onChange={(e)=> setTitulo(e.target.value)}
               placeholder="Nombre de la pelicula"
               required
             />
             <input
               className={botonesClass}
               type="text"
-              
+              onChange={(e)=> setGenero(e.target.value)}
               placeholder="Genero"
               required
             />
             <textarea
               className={`${botonesClass} h-28`}
-              
               cols="30"
               rows="10"
+              onChange={(e)=> setSinopsis(e.target.value)}
               placeholder="Sinopsis"
               required
             />
             <input
               className={botonesClass}
               type="date"
-              
-              placeholder="Protagonistas"
+              onChange={(e)=>setFecha_Publicacion(e.target.value)}
+              placeholder="Fecha de producción"
               required
             />
             <input
               className={botonesClass}
               type="text"
-              
-              placeholder="directores"
+              onChange={(e)=> setActores_Principales(e.target.value)}
+              placeholder="Reparto principal"
               required
             />
             <input
               className={botonesClass}
               type="text"
-              
+              onChange={(e)=> setDirectores(e.target.value)}
+              placeholder="Directores"
+              required
+            />
+            <input
+              className={botonesClass}
+              type="text"
+              onChange={(e)=> setFranquicia(e.target.value)}
               placeholder="Franquicia"
               required
             />
