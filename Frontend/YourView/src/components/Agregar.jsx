@@ -1,9 +1,28 @@
 import { FaPlus } from "react-icons/fa";
 import { useState } from "react";
-
+import axios from 'axios'
 function Agregar() {
   const [show, setShow] = useState("hidden");
+  const [Genero, setGenero]= useState('')
+  const [Titulo, setTitulo]=useState('')
+  const [Sinopsis,setSinopsis]=useState('')
+  const[Imagen,setImagen]=useState('')
+  const[Fecha_Publicacion, setFecha_Publicacion]=useState('')
+  const[Actores_Principales, setActores_Principales]=useState('')
+  const[Directores, setDirectores]=useState('')
+  const [Franquicia, setFranquicia]=useState('')
+
   let botonesClass = "w-full p-2 rounded-lg border-2 border-azul";
+  function aggCard(Genero,Titulo,Sinopsis,Imagen,Fecha_Publicacion,Actores_Principales,Directores,Franquicia){
+    axios.post('http://localhost:3000/LoginUser',{
+      Genero,
+      Titulo,
+      Sinopsis,
+      Imagen,
+      Fecha_Publicacion,
+      
+    })
+  }
   return (
     <div className="dark:text-gray-300">
       <div className="fixed bottom-28 right-5 bg-slate-600 p-5 rounded-full">
@@ -25,30 +44,26 @@ function Agregar() {
             <input
               className={botonesClass}
               type="file"
-              name=""
-              id=""
+              
               required
             />
             <input
               className={botonesClass}
               type="text"
-              name=""
-              id=""
+              
               placeholder="Nombre de la pelicula"
               required
             />
             <input
               className={botonesClass}
               type="text"
-              name=""
-              id=""
+              
               placeholder="Genero"
               required
             />
             <textarea
               className={`${botonesClass} h-28`}
-              name=""
-              id=""
+              
               cols="30"
               rows="10"
               placeholder="Sinopsis"
@@ -57,24 +72,21 @@ function Agregar() {
             <input
               className={botonesClass}
               type="date"
-              name=""
-              id=""
+              
               placeholder="Protagonistas"
               required
             />
             <input
               className={botonesClass}
               type="text"
-              name=""
-              id=""
+              
               placeholder="directores"
               required
             />
             <input
               className={botonesClass}
               type="text"
-              name=""
-              id=""
+              
               placeholder="Franquicia"
               required
             />

@@ -8,7 +8,7 @@ function InicioS() {
   const [clave, setClave] = useState("");
   function sesion(nombre, clave) {
     axios
-      .post("http://localhost:3000/LoginUser", {
+      .post("http://localhost:3000/NewMovie", {
         nombre: nombre,
         clave: clave,
       })
