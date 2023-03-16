@@ -22,6 +22,10 @@ function Registro() {
       })
       .then((response) => {
         console.log(response.data);
+        localStorage.setItem(
+          "currentUser",
+          JSON.stringify({ nombre, clave, icon})
+        );
         window.location.href = "/inicio";
       })
       .catch((error) => console.log(error));
@@ -37,6 +41,10 @@ function Registro() {
       })
       .then((response) => {
         console.log(response.data);
+        localStorage.setItem(
+          "currentUser",
+          JSON.stringify({ nombre, clave, icon, developer_password })
+        );
         window.location.href = "/inicio";
       })
       .catch((error) => console.log(error));
