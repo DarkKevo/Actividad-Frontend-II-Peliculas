@@ -7,7 +7,7 @@ function Registro() {
   const [user, setUser] = useState("");
   const [nombreU, setNombreU] = useState("");
   const [claveU, setClaveU] = useState("");
-  const [iconU, seticonU] = useState("");
+  const [iconU, setIconU] = useState("");
   const [nombreA, setNombreA] = useState("");
   const [claveA, setClaveA] = useState("");
   const [iconA, setIconA] = useState("");
@@ -42,12 +42,29 @@ function Registro() {
       .catch((error) => console.log(error));
   }
   /* SUBMIT */
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    if (user=='Cliente'){
+      registerU(nombreU,claveU,iconU)
+      console.log('Cliente registrado')
+      setNombreU('')
+      setClaveU('')
+      setIconU('')
+    }else{
+      registerA(nombreA,claveA,iconA,developer_password)
+      console.log('Administrador registrado')
+      setNombreA("")
+      setClaveA("")
+      setIconA("")
+      setDeveloper_password('')
+    }
+  }
   return (
     <div className="min-h-screen flex flex-col gap-10 dark:bg-black items-center justify-center bg-salmon p-5 font-Source text-black">
       <Logo tamaño={"text-5xl"} />
       <form
         className="p-5 bg-salmon border-4 border-azul  flex flex-col items-center justify-center gap-5 rounded-md text-xl"
-        action=""
+        onSubmit={handleSubmit}
         method="post"
       >
         <h1 className="text-3xl">Registro</h1>
@@ -64,25 +81,22 @@ function Registro() {
           <option value="Administrador">Administrador</option>
         </select>
         <input
+          value={nombreU}
+          onChange={(e) => {setNombreU(e.target.value)
+          setNombreA(e.target.value)}}
           className="p-3 bg-white rounded-lg border-azul border-4 w-full"
           type="text"
-          name=""
-          id=""
           placeholder="Ingrese su nombre"
+          required
         />
         <input
-          className="p-3 bg-white rounded-lg border-azul border-4 w-full"
-          type="email"
-          name=""
-          id=""
-          placeholder="Ingrese su Correo Electronico"
-        />
-        <input
+        value={claveU}
+        onChange={(e)=>{setClaveU(e.target.value)
+        setClaveA(e.target.value)}}
           className="p-3 bg-white rounded-lg border-azul border-4 w-full"
           type="password"
-          name=""
-          id=""
           placeholder="Ingrese una contraseña"
+          required
         />
         <div
           className={user == "Administrador" ? "flex flex-col gap-3" : "hidden"}
@@ -90,10 +104,10 @@ function Registro() {
           <p className="text-sm">Ingrese su clave de Administrador</p>
           <input
             className="p-3 bg-white rounded-lg border-azul border-4 w-full"
-            type="text"
-            name=""
-            id=""
+            type="password"
             placeholder="ingrese clave"
+            value={developer_password}
+            onChange={(e)=>setDeveloper_password(e.target.value)}
           />
         </div>
         <button

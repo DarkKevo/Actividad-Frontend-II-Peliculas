@@ -18,7 +18,7 @@ function InicioS() {
       })
       .catch((error) => console.log(error));
   }
-  const handleSubmit = async (e) => {
+  const handleSubmit =(e) => {
     e.preventDefault();
     console.log(nombre, clave);
     sesion(nombre, clave);
