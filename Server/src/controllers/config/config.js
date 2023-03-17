@@ -4,7 +4,9 @@ export let port;
 export let username;
 export let password;
 
-host = 'localhost';
-port = '3306';
-username = 'root';
-password = 'Darkkevo07';
+host = "localhost";
+port = "3306";
+username = "root";
+/* password = 'Darkkevo07'; */
+/* password = 'victoria123'; */
+password = "AdminUser";
