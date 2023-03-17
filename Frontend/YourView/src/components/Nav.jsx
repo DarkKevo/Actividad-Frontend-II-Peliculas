@@ -14,7 +14,9 @@ function Nav() {
   return (
     <div className="min-h-screen">
       <header className="flex justify-between items-center p-5 bg-salmon dark:bg-oscuro">
+        <Link to={'/inicio'}>
         <Logo tamaño={"text-3xl"} />
+        </Link>
         <ul
           className={
             toggleMenu +

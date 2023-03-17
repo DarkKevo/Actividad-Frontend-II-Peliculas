@@ -7,6 +7,7 @@ function Editar() {
   return (
     <div>
       <FaEdit
+      className="cursor-pointer"
         onClick={() => {
           setShow("fixed");
         }}

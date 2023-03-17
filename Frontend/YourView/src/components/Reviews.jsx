@@ -1,9 +1,8 @@
 import { AiOutlineSend } from "react-icons/ai";
 function Reviews(){
     return(
-        <div>
-            <form className="flex  my-4 text-xl items-start gap-2" action="">
-                {/* <input className="border-2 border-azul p-2 w-full" type="text" name="" id="" placeholder="Escribe un comentario"/> */}
+        <div className="p-5 flex flex-col items-center md:px-24 lg:px-36">
+            <form className="w-full flex  my-4 text-xl items-start gap-2" action="">{/* <input className="border-2 border-azul p-2 w-full" type="text" name="" id="" placeholder="Escribe un comentario"/> */}
                 <textarea className="border-4 rounded-lg h-32 border-morado p-3 w-full" name="" id="" cols="30" rows="10" placeholder="¿Que te parecio la pelicula?"></textarea>
                 <button className="text-4xl text-oscuro dark:text-salmon" type="submit"><AiOutlineSend/></button>
             </form>
