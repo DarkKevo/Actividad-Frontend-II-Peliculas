@@ -1,20 +1,22 @@
+import Logo from "./Logo";
 import { Link } from "react-router-dom";
-function GenericNotFound(){
-    return(
-        <div className="text-center mt-5 mx-4 flex flex-col justify-evenly">
-      <h1 className="text-xl font-bold bg-red-600 hover:bg-red-900 rounded-lg">
+function GenericNotFound() {
+  return (
+    <div className="min-h-screen text-center p-5 gap-5 dark:text-white dark:bg-black dark:bg-opacity-80 bg-salmon flex flex-col justify-center items-center">
+      <Logo tamaño={'text-4xl'}/>
+      <h1 className="text-xl font-bold">
         404 Page Not Found
       </h1>
-      <p className="italic">
-        😔 La vista que deseas ver no se ha encontrado, intenta con otra ruta...
+      <p>
+        😔 Parece que la pagina a la que desea ingresar no existe, pruebe con otra o...
       </p>
-      <Link to={"/inicio"}>
-        <span className="p-2 bg-green-700 hover:bg-green-900 rounded-lg ">
-          Regresar al inicio
+      <Link to={"/"}>
+        <span className="p-3  bg-azul bg-opacity-50 rounded-lg">
+          Regrese al inicio <strong>AQUI</strong>
         </span>
       </Link>
     </div>
-    )
+  );
 }
 
 export default GenericNotFound;
