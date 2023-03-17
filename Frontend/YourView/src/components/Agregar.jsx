@@ -12,7 +12,8 @@ function Agregar() {
   const [Directores, setDirectores] = useState("");
   const [Franquicia, setFranquicia] = useState("");
 
-  let botonesClass = "w-full p-2 text-sm rounded-lg border-2 border-azul sm:text-xs";
+  let botonesClass =
+    "w-full p-2 text-sm rounded-lg border-2 border-azul sm:text-xs";
   function aggCard(
     Genero,
     Titulo,
@@ -62,17 +63,17 @@ function Agregar() {
   };
   return (
     <div className="dark:text-gray-300">
-      <div className="fixed bottom-28 right-5 bg-slate-600 p-5 rounded-full">
-        <FaPlus
-          onClick={() => {
-            setShow("fixed");
-          }}
-        />
+      <div
+        className="fixed bottom-28 right-5 bg-slate-600 p-5 rounded-full cursor-pointer"
+        onClick={() => {
+          setShow("fixed md:flex");
+        }}
+      >
+        <FaPlus />
       </div>
       {/* modal */}
       <div
-        className={`${show} w-full h-screen top-0 left-0 md:flex md:items-center md:justify-center md:bg-black md:bg-opacity-75 md:p-5`}
-      >
+        className={`${show} w-full h-screen top-0 left-0 md:items-center md:justify-center md:bg-black md:bg-opacity-75 md:p-5 z-0`}>
         <div className="w-100 h-full max-h-screen flex flex-col md:rounded-lg bg-salmon dark:bg-black dark:border-2 dark:border-azul md:w-1/2 md:h-auto">
           <div className="h-1/6 border-b-2 border-azul flex items-center p-3">
             Agregar Pelicula
