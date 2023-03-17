@@ -41,7 +41,7 @@ export const routes = Express.Router();
  *           type: string
  *           description: Titulo de la Pelicula
  *         Sinopsis:
- *           type: number
+ *           type: string
  *           description: Contexto de la Pelicula
  *         Imagen:
  *           type: file
