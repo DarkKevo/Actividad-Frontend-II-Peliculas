@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from 'sweetalert2'
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -58,26 +59,34 @@ function Registro() {
       setNombreU('')
       setClaveU('')
       setIconU('')
-    }else{
+    }else if(user === 'Administrador'){
       registerA(nombreA,claveA,iconA,developer_password)
       console.log('Administrador registrado')
       setNombreA("")
       setClaveA("")
       setIconA("")
       setDeveloper_password('')
+    }else{
+      Swal.fire({
+        position: 'top-center',
+        icon: 'error',
+        title: 'Seleccione si es Usuario o Administrador',
+        showConfirmButton: false,
+        timer: 2000
+      })
     }
   }
   return (
-    <div className="min-h-screen flex flex-col gap-10 dark:bg-black items-center justify-center bg-salmon p-5 font-Source text-black">
+    <div className="min-h-screen flex flex-col gap-10 dark:text-gray-500 dark:bg-black dark:bg-opacity-80 items-center justify-center bg-salmon p-5 font-Source text-black">
       <Logo tamaño={"text-5xl"} />
       <form
-        className="p-5 bg-salmon border-4 border-azul  flex flex-col items-center justify-center gap-5 rounded-md text-xl"
+        className="p-5 bg-salmon dark:bg-black border-4  border-azul  flex flex-col items-center justify-center gap-5 rounded-md text-xl"
         onSubmit={handleSubmit}
         method="post"
       >
         <h1 className="text-3xl">Registro</h1>
         <select
-          className="p-3  bg-white rounded-lg text-black border-azul border-4 w-full"
+          className="p-3  bg-white rounded-lg  text-black border-azul border-4 w-full"
           name=""
           id=""
           onChange={(e) => {

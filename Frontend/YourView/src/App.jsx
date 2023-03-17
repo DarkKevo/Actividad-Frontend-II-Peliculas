@@ -26,7 +26,7 @@ function App() {
         </Route>
         <Route path="*" element={<GenericNotFound />} />
       </Routes>
-      <div onClick={() => setDarkToggle(!darkToggle)} className='w-1/6 p-3 fixed bottom-5 right-5 rounded-full flex items-center justify-center bg-azul transition-all duration-400 dark:bg-oscuro dark:border-2 border-salmon text-4xl text-white'>
+      <div onClick={() => setDarkToggle(!darkToggle)} className='w-16 h-16 p-3 fixed bottom-5 right-3 rounded-full flex items-center justify-center bg-azul transition-all duration-400 dark:bg-oscuro dark:border-2 border-salmon text-4xl text-white'>
       <FaMoon className='dark:hidden'/>
       <FaRegSun className='hidden dark:block'/>
       </div>
