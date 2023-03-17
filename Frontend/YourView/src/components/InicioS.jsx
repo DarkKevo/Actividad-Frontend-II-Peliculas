@@ -18,7 +18,13 @@ function InicioS() {
       })
       .then((response) => {
         if (response.data.status == false) {
-          console.log("PAGUE VACUNA");
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: "Los Datos son Invalidos",
+            showConfirmButton: false,
+            timer: 2000,
+          });
         } else {
           console.log(response.data);
           localStorage.setItem(
