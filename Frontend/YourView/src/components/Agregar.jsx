@@ -72,6 +72,19 @@ function Agregar() {
       URL_pelicula,
       data.token
     );
+
+    console.log({
+      Genero,
+      Titulo,
+      Sinopsis,
+      Imagen,
+      Fecha_Publicacion,
+      Actores_Principales,
+      Directores,
+      Franquicia,
+      URL_pelicula,
+      data: data.token
+    });
     setGenero("");
     setTitulo("");
     setSinopsis("");
