@@ -14,7 +14,7 @@ function Agregar() {
   const [URL_pelicula, setURL_pelicula] = useState("");
   let data = JSON.parse(localStorage.getItem("currentUser"));
   let botonesClass =
-    "w-full p-2 text-sm rounded-lg border-2 border-azul sm:text-xs";
+    "w-full p-1 rounded-lg border-2 border-azul sm:w-[49%] sm:h-10 sm:text-lg";
 
   function aggCard(
     Genero,
@@ -77,7 +77,7 @@ function Agregar() {
     setActores_Principales("");
     setDirectores("");
     setFranquicia("");
-    setURL_pelicula;
+    setURL_pelicula('');
   };
   return (
     <div className="dark:text-gray-300">
@@ -91,21 +91,21 @@ function Agregar() {
       </div>
       {/* modal */}
       <div
-        className={`${show} w-full h-screen top-0 left-0 md:items-center md:justify-center md:bg-black md:bg-opacity-75 md:p-5 z-0`}
+        className={`${show} w-full h-screen top-0 left-0 flex flex-col items-center justify-center bg-black bg-opacity-70`}
       >
-        <div className="w-100 h-full max-h-screen flex flex-col md:rounded-lg bg-salmon dark:bg-black dark:border-2 dark:border-azul md:w-1/2 md:h-auto">
+        <div className="h-screen flex flex-col text-xl bg-salmon border-2 border-azul rounded-lg dark:bg-black md:min-h-[75%] md:max-h-[90%] md:w-3/4">
           <div className="h-1/6 border-b-2 border-azul flex items-center p-3">
             Agregar Pelicula
           </div>
-          <div>
+          <div className="h-full">
             <form
-              className="flex flex-col gap-2 p-3"
+              className="h-full flex flex-wrap items-center justify-between p-3 gap-1"
               onSubmit={handleSubmit}
               method="post"
               required
             >
               <input
-                className={botonesClass}
+                className={`${botonesClass}`}
                 type="file"
                 accept="image/*"
                 onChange={(e) => setImagen(e.target.files[0])}
@@ -164,14 +164,18 @@ function Agregar() {
               <input
                 className={botonesClass}
                 type="url"
-                onChange={(e) => setURL_pelicula(e.target.value)}
-                placeholder="Direccion de la pelicula"
-                required
+                name="Direccion de la pelicula"
+                onChange={(e) => {
+                  setURL_pelicula(e.target.value);
+                }}
+                id=""
+                placeholder="direccion URL"
               />
+
               <input className={botonesClass} type="submit" value="Agregar" />
             </form>
           </div>
-          <div className="1/6 border-t-2 border-azul flex items-center p-3">
+          <div className="h-1/6 border-t-2 border-azul flex items-center p-3">
             <button
               onClick={() => {
                 setShow("hidden");

@@ -3,7 +3,8 @@ import { FaEdit } from "react-icons/fa";
 
 function Editar() {
   const [show, setShow] = useState("hidden");
-  let botonesClass = "w-full p-1 rounded-lg border-2 border-azul sm:w-[49%] sm:h-10 sm:text-lg";
+  let botonesClass =
+    "w-full p-1 rounded-lg border-2 border-azul sm:w-[49%] sm:h-10 sm:text-lg";
   return (
     <div>
       <FaEdit
@@ -21,7 +22,11 @@ function Editar() {
             Agregar Pelicula
           </div>
           <div className="h-full">
-            <form className="h-full flex flex-wrap items-center justify-between p-3 gap-1" method="post" required>
+            <form
+              className="h-full flex flex-wrap items-center justify-between p-3 gap-1"
+              method="post"
+              required
+            >
               <input className={botonesClass} type="file" required />
               <input
                 className={botonesClass}
@@ -65,6 +70,13 @@ function Editar() {
                 type="text"
                 placeholder="Franquicia"
                 required
+              />
+              <input
+                className={botonesClass}
+                type="url"
+                name="Direccion de la pelicula"
+                id=""
+                placeholder="direccion URL"
               />
               <input
                 className={`${botonesClass} text-gray-600 sm:w-[100%]`}
