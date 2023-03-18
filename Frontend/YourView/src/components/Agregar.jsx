@@ -1,6 +1,7 @@
 import { FaPlus } from "react-icons/fa";
 import { useState } from "react";
 import axios from "axios";
+
 function Agregar() {
   const [show, setShow] = useState("hidden");
   const [Imagen, setImagen] = useState("");
@@ -12,7 +13,9 @@ function Agregar() {
   const [Directores, setDirectores] = useState("");
   const [Franquicia, setFranquicia] = useState("");
   const [URL_pelicula, setURL_pelicula] = useState("");
+
   let data = JSON.parse(localStorage.getItem("currentUser"));
+
   let botonesClass =
     "w-full p-1 rounded-lg border-2 border-azul sm:w-[49%] sm:h-10 sm:text-lg";
 
@@ -77,8 +80,9 @@ function Agregar() {
     setActores_Principales("");
     setDirectores("");
     setFranquicia("");
-    setURL_pelicula('');
+    setURL_pelicula("");
   };
+
   return (
     <div className="dark:text-gray-300">
       <div
@@ -163,13 +167,14 @@ function Agregar() {
               />
               <input
                 className={botonesClass}
-                type="url"
+                type="text"
                 name="Direccion de la pelicula"
                 onChange={(e) => {
                   setURL_pelicula(e.target.value);
                 }}
                 id=""
                 placeholder="direccion URL"
+                required
               />
 
               <input className={botonesClass} type="submit" value="Agregar" />
