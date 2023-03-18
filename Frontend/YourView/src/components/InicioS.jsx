@@ -10,9 +10,39 @@ function InicioS() {
   const [clave, setClave] = useState("");
 
   //inicio sesion
-  function sesion(nombre, clave) {
+  function sesionU(nombre, clave) {
     axios
       .post("http://localhost:3000/LoginUser", {
+        nombre: nombre,
+        clave: clave,
+      })
+      .then((response) => {
+        if (response.data.status == false) {
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: "Los Datos son Invalidos",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        } else {
+          console.log(response.data);
+          localStorage.setItem(
+            "currentUser",
+            JSON.stringify({
+              nombre: response.data.nombre,
+              icon: response.data.icon,
+              token: response.data.token,
+            })
+          );
+          window.location.href = "/inicio";
+        }
+      })
+      .catch((error) => console.log(error));
+  }
+  function sesionA(nombre, clave) {
+    axios
+      .post("http://localhost:3000/LoginAdmin", {
         nombre: nombre,
         clave: clave,
       })
@@ -44,8 +74,12 @@ function InicioS() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(nombre, clave);
-    if (user == "Administrador" || user == "Cliente") {
-      sesion(nombre, clave);
+    if (user == "Administrador") {
+      sesionA(nombre, clave);
+      setNombre("");
+      setClave("");
+    } else if (user == "Cliente") {
+      sesionU(nombre, clave);
       setNombre("");
       setClave("");
     } else {

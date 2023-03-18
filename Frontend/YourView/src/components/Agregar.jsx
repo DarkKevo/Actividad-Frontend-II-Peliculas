@@ -11,9 +11,11 @@ function Agregar() {
   const [Actores_Principales, setActores_Principales] = useState("");
   const [Directores, setDirectores] = useState("");
   const [Franquicia, setFranquicia] = useState("");
-
+  const [URL_pelicula, setURL_pelicula] = useState("");
+  let data = JSON.parse(localStorage.getItem("currentUser"));
   let botonesClass =
     "w-full p-2 text-sm rounded-lg border-2 border-azul sm:text-xs";
+
   function aggCard(
     Genero,
     Titulo,
@@ -22,21 +24,34 @@ function Agregar() {
     Fecha_Publicacion,
     Actores_Principales,
     Directores,
-    Franquicia
+    Franquicia,
+    URL_pelicula,
+    token
   ) {
+    let config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+    };
     axios
-      .post("http://localhost:3000/NewMovie", {
-        Genero,
-        Titulo,
-        Sinopsis,
-        Imagen,
-        Fecha_Publicacion,
-        Actores_Principales,
-        Directores,
-        Franquicia,
-      })
+      .post(
+        "http://localhost:3000/NewMovie",
+        {
+          Genero,
+          Titulo,
+          Sinopsis,
+          Imagen,
+          Fecha_Publicacion,
+          Actores_Principales,
+          Directores,
+          Franquicia,
+          URL_pelicula,
+        },
+        config
+      )
       .then((response) => {
-        console.log("Pelicula agregada");
+        console.log("Pelicula agregada" + response.data);
       })
       .catch((error) => console.log(error));
   }
@@ -50,7 +65,9 @@ function Agregar() {
       Fecha_Publicacion,
       Actores_Principales,
       Directores,
-      Franquicia
+      Franquicia,
+      URL_pelicula,
+      data.token
     );
     setGenero("");
     setTitulo("");
@@ -60,6 +77,7 @@ function Agregar() {
     setActores_Principales("");
     setDirectores("");
     setFranquicia("");
+    setURL_pelicula;
   };
   return (
     <div className="dark:text-gray-300">
@@ -73,7 +91,8 @@ function Agregar() {
       </div>
       {/* modal */}
       <div
-        className={`${show} w-full h-screen top-0 left-0 md:items-center md:justify-center md:bg-black md:bg-opacity-75 md:p-5 z-0`}>
+        className={`${show} w-full h-screen top-0 left-0 md:items-center md:justify-center md:bg-black md:bg-opacity-75 md:p-5 z-0`}
+      >
         <div className="w-100 h-full max-h-screen flex flex-col md:rounded-lg bg-salmon dark:bg-black dark:border-2 dark:border-azul md:w-1/2 md:h-auto">
           <div className="h-1/6 border-b-2 border-azul flex items-center p-3">
             Agregar Pelicula
@@ -88,7 +107,8 @@ function Agregar() {
               <input
                 className={botonesClass}
                 type="file"
-                onChange={(e) => setImagen(e.target.value)}
+                accept="image/*"
+                onChange={(e) => setImagen(e.target.files[0])}
                 required
               />
               <input
@@ -139,6 +159,13 @@ function Agregar() {
                 type="text"
                 onChange={(e) => setFranquicia(e.target.value)}
                 placeholder="Franquicia"
+                required
+              />
+              <input
+                className={botonesClass}
+                type="url"
+                onChange={(e) => setURL_pelicula(e.target.value)}
+                placeholder="Direccion de la pelicula"
                 required
               />
               <input className={botonesClass} type="submit" value="Agregar" />
