@@ -22,5 +22,5 @@ export const upload2 = upload.single('Imagen');
 export const uploadFile = (req, res) => {
   const { Genero, Titulo, Sinopsis, Fecha_Publicacion, Actores_Principales, Directores, Franquicia, URL_pelicula } = req.body;
   NewMovie(Genero, Titulo, Sinopsis, imagen_name, Fecha_Publicacion, Actores_Principales, Directores, Franquicia, URL_pelicula);
-  res.json({ message: 'Enviado' });
+  res.send(true);
 };

@@ -14,6 +14,17 @@ function Agregar() {
   const [Franquicia, setFranquicia] = useState("");
   const [URL_pelicula, setURL_pelicula] = useState("");
 
+  console.log({
+    Genero,
+    Titulo,
+    Sinopsis,
+    Imagen,
+    Fecha_Publicacion,
+    Actores_Principales,
+    Directores,
+    Franquicia,
+    URL_pelicula,
+  });
   let data = JSON.parse(localStorage.getItem("currentUser"));
 
   let botonesClass =
@@ -31,6 +42,17 @@ function Agregar() {
     URL_pelicula,
     token
   ) {
+    console.log({
+      Genero,
+      Titulo,
+      Sinopsis,
+      Imagen,
+      Fecha_Publicacion,
+      Actores_Principales,
+      Directores,
+      Franquicia,
+      URL_pelicula,
+    });
     let config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -54,7 +76,16 @@ function Agregar() {
         config
       )
       .then((response) => {
-        console.log("Pelicula agregada" + response.data);
+        console.log(response);
+        setGenero("");
+        setTitulo("");
+        setSinopsis("");
+        setImagen("");
+        setFecha_Publicacion("");
+        setActores_Principales("");
+        setDirectores("");
+        setFranquicia("");
+        setURL_pelicula("");
       })
       .catch((error) => console.log(error));
   }
@@ -72,28 +103,6 @@ function Agregar() {
       URL_pelicula,
       data.token
     );
-
-    console.log({
-      Genero,
-      Titulo,
-      Sinopsis,
-      Imagen,
-      Fecha_Publicacion,
-      Actores_Principales,
-      Directores,
-      Franquicia,
-      URL_pelicula,
-      data: data.token
-    });
-    setGenero("");
-    setTitulo("");
-    setSinopsis("");
-    setImagen("");
-    setFecha_Publicacion("");
-    setActores_Principales("");
-    setDirectores("");
-    setFranquicia("");
-    setURL_pelicula("");
   };
 
   return (
@@ -129,6 +138,7 @@ function Agregar() {
                 required
               />
               <input
+                value={Titulo}
                 className={botonesClass}
                 type="text"
                 onChange={(e) => setTitulo(e.target.value)}
@@ -136,6 +146,7 @@ function Agregar() {
                 required
               />
               <input
+                value={Genero}
                 className={botonesClass}
                 type="text"
                 onChange={(e) => setGenero(e.target.value)}
@@ -143,6 +154,7 @@ function Agregar() {
                 required
               />
               <textarea
+                value={Sinopsis}
                 className={`${botonesClass} h-20`}
                 cols="30"
                 rows="10"
@@ -151,6 +163,7 @@ function Agregar() {
                 required
               />
               <input
+                value={Fecha_Publicacion}
                 className={botonesClass}
                 type="date"
                 onChange={(e) => setFecha_Publicacion(e.target.value)}
@@ -158,6 +171,7 @@ function Agregar() {
                 required
               />
               <input
+                value={Actores_Principales}
                 className={botonesClass}
                 type="text"
                 onChange={(e) => setActores_Principales(e.target.value)}
@@ -165,6 +179,7 @@ function Agregar() {
                 required
               />
               <input
+                value={Directores}
                 className={botonesClass}
                 type="text"
                 onChange={(e) => setDirectores(e.target.value)}
@@ -172,6 +187,7 @@ function Agregar() {
                 required
               />
               <input
+                value={Franquicia}
                 className={botonesClass}
                 type="text"
                 onChange={(e) => setFranquicia(e.target.value)}
@@ -179,6 +195,7 @@ function Agregar() {
                 required
               />
               <input
+                value={URL_pelicula}
                 className={botonesClass}
                 type="text"
                 name="Direccion de la pelicula"
