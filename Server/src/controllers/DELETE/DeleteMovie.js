@@ -12,7 +12,7 @@ export const DeleteMovie = (req, res) => {
     multipleStatements: true,
   });
 
-  const { idPelicula } = req.params
+  const { idPelicula } = req.params;
 
   conexion.connect(function (err) {
     if (err) {
@@ -53,12 +53,12 @@ export const DeleteMovie = (req, res) => {
     if (err) {
       console.log(err);
       conexion.end();
-      res.json({Message: 'error'})
+      res.send(false);
       return false;
     } else {
       console.log(results);
       conexion.end();
-      res.json({Message: 'Enviado'})
+      res.send(true);
       return true;
     }
   });
