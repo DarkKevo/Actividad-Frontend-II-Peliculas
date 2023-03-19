@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaArrowAltCircleRight } from "react-icons/fa";
-function Cards({titulo, img}) {
+function Cards({titulo, img, id}) {
 
   
   return (
@@ -16,7 +16,7 @@ function Cards({titulo, img}) {
         <h1 className="text-md font-bold">
           {titulo}
         </h1>
-        <Link to={'/movie/:id'}>
+        <Link to={`/movie/${id}`}>
           <p className="flex items-center text-sm gap-1">
             Mas Información <FaArrowAltCircleRight />
           </p>

@@ -30,7 +30,7 @@ function Inicio() {
   return (
     <div className='min-h-screen bg-gray-100 dark:bg-black dark:bg-opacity-90 bg-opacity-70 flex flex-wrap items-center justify-evenly p-5 '>
       {peliculas.map((x) => (
-        <Cards titulo={x.Titulo} img={x.Imagen} />
+        <Cards titulo={x.Titulo} img={x.Imagen} id={x.idPelicula} />
       ))}
       <Agregar />
     </div>
