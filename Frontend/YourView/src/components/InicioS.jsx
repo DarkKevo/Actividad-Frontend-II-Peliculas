@@ -33,7 +33,7 @@ function InicioS() {
               nombre: response.data.nombre,
               icon: response.data.icon,
               token: response.data.token,
-              type: 'user'
+              type: "user",
             })
           );
           window.location.href = "/inicio";
@@ -64,7 +64,7 @@ function InicioS() {
               nombre: response.data.nombre,
               icon: response.data.icon,
               token: response.data.token,
-              type: 'admin'
+              type: "admin",
             })
           );
           window.location.href = "/inicio";
