@@ -9,7 +9,7 @@ function Cards({titulo, img}) {
     <div className="w-72 h-72 my-5 bg-cover bg-no-repeat bg-center dark:text-gray-300  border-2 border-oscuro dark:border-salmon rounded-lg flex flex-col gap-2">
       <img
         className="rounded-sm h-3/4 object-contain object-center"
-        src={img}
+        src={`/src/Images/${img}`}
         alt=""
       />
       <div className="h-full w-full flex flex-col items-start justify-end p-2 pb-4">
