@@ -19,7 +19,6 @@ function Agregar() {
 
   const dispatch = useDispatch()
   let data = JSON.parse(localStorage.getItem("currentUser"));
-
   let botonesClass =
     "w-full p-1 rounded-lg border-2 border-azul sm:w-[49%] sm:h-10 sm:text-lg";
 
@@ -98,7 +97,7 @@ function Agregar() {
   return (
     <div className="dark:text-gray-300">
       <div
-        className="fixed bottom-28 right-5 bg-slate-600 p-5 rounded-full cursor-pointer"
+        className={data.type != 'user' ? 'fixed bottom-28 right-5 bg-slate-600 p-5 rounded-full cursor-pointer' : 'hidden'}
         onClick={() => {
           setShow("fixed md:flex");
         }}

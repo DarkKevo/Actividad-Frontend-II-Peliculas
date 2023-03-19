@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Reviews from './Reviews';
 import Editar from './Edit';
-import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import { FaEdit, FaTrashAlt,FaArrowCircleLeft } from 'react-icons/fa';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useParams } from 'react-router-dom';
@@ -95,15 +95,16 @@ function Pelicula() {
         <div className='w-full md:flex md:flex-col md:items-start'>
           <img className='w-full h-full object-cover object-center col-start-1 row-start-1' src={`/src/Images/${result[0].Imagen}`} alt='' />
           <div className='flex justify-end p-2 gap-5 text-2xl'>
+            <div className={data.type != 'user' ? 'flex gap-5' : 'hidden'}>
             <Editar id={target.id} />
-            <Link>
               <FaTrashAlt
                 onClick={() => {
                   deleteMovie(target.id);
                 }}
               />
-            </Link>
-            <p onClick={Regresar}>Regresar</p>
+
+            </div>
+            <p onClick={Regresar}><FaArrowCircleLeft/></p>
           </div>
         </div>
         <div className='w-full p-5 flex flex-col gap-3'>
