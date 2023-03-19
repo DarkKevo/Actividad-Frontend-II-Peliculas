@@ -139,10 +139,13 @@ function Agregar() {
                 <option value="1">Accion</option>
                 <option value="2">Drama</option>
                 <option value="3">Terror</option>
-                <option value="4">Fantasia</option>
-                <option value="5">Musical</option>
-                <option value="6">Ciencia-Ficcion</option>
-                <option value="7">Documental</option>
+                <option value="4">Suspenso</option>
+                <option value="5">Comedia</option>
+                <option value="6">KPOP</option>
+                <option value="7">Fantasia</option>
+                <option value="8">Musical</option>
+                <option value="9">Ciencia-Ficcion</option>
+                <option value="10">Documental</option>
               </select>
               <textarea
                 value={Sinopsis}
