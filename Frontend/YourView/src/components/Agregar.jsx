@@ -1,6 +1,7 @@
 import { FaPlus } from "react-icons/fa";
 import { useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function Agregar() {
   const [show, setShow] = useState("hidden");
@@ -14,17 +15,7 @@ function Agregar() {
   const [Franquicia, setFranquicia] = useState("");
   const [URL_pelicula, setURL_pelicula] = useState("");
 
-  console.log({
-    Genero,
-    Titulo,
-    Sinopsis,
-    Imagen,
-    Fecha_Publicacion,
-    Actores_Principales,
-    Directores,
-    Franquicia,
-    URL_pelicula,
-  });
+
   let data = JSON.parse(localStorage.getItem("currentUser"));
 
   let botonesClass =
@@ -42,17 +33,7 @@ function Agregar() {
     URL_pelicula,
     token
   ) {
-    console.log({
-      Genero,
-      Titulo,
-      Sinopsis,
-      Imagen,
-      Fecha_Publicacion,
-      Actores_Principales,
-      Directores,
-      Franquicia,
-      URL_pelicula,
-    });
+    
     let config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -77,6 +58,13 @@ function Agregar() {
       )
       .then((response) => {
         console.log(response);
+        Swal.fire({
+          position: "top-center",
+            icon: "success",
+            title: "Pelicula Agregada",
+            showConfirmButton: false,
+            timer: 2000,
+        })
         setGenero("");
         setTitulo("");
         setSinopsis("");
