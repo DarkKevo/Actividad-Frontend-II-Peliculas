@@ -34,12 +34,16 @@ function Editar() {
                 placeholder="Nombre de la pelicula"
                 required
               />
-              <input
-                className={botonesClass}
-                type="text"
-                placeholder="Genero"
-                required
-              />
+              <select className={botonesClass} onChange={(e) => setGenero(e.target.value)} name="" id="">
+                <option value="">Seleccione una categoria</option>
+                <option value="1">Accion</option>
+                <option value="2">Drama</option>
+                <option value="3">Terror</option>
+                <option value="4">Fantasia</option>
+                <option value="5">Musical</option>
+                <option value="6">Ciencia-Ficcion</option>
+                <option value="7">Documental</option>
+              </select>
               <textarea
                 className={`${botonesClass} h-20`}
                 cols="30"
