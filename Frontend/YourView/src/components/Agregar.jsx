@@ -2,6 +2,8 @@ import { FaPlus } from "react-icons/fa";
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { GetAllMovies } from "../features/Peliculas/PeliculaSlice";
+import { useDispatch } from "react-redux";
 
 function Agregar() {
   const [show, setShow] = useState("hidden");
@@ -15,7 +17,7 @@ function Agregar() {
   const [Franquicia, setFranquicia] = useState("");
   const [URL_pelicula, setURL_pelicula] = useState("");
 
-
+  const dispatch = useDispatch()
   let data = JSON.parse(localStorage.getItem("currentUser"));
 
   let botonesClass =
@@ -65,7 +67,6 @@ function Agregar() {
             showConfirmButton: false,
             timer: 2000,
         })
-        setGenero("");
         setTitulo("");
         setSinopsis("");
         setImagen("");
@@ -74,6 +75,7 @@ function Agregar() {
         setDirectores("");
         setFranquicia("");
         setURL_pelicula("");
+        dispatch(GetAllMovies());
       })
       .catch((error) => console.log(error));
   }
@@ -133,21 +135,16 @@ function Agregar() {
                 placeholder="Nombre de la pelicula"
                 required
               />
-              {/* <select name="" id="">
-                <option value="">Accion</option>
-                <option value="">Drama</option>
-                <option value="">Terror</option>
-                <option value="">Accion</option>
-                <option value="">Accion</option>
-              </select> */}
-              <input
-                value={Genero}
-                className={botonesClass}
-                type="text"
-                onChange={(e) => setGenero(e.target.value)}
-                placeholder="Genero"
-                required
-              />
+              <select className={botonesClass} onChange={(e) => setGenero(e.target.value)} name="" id="">
+                <option value="">Seleccione una categoria</option>
+                <option value="1">Accion</option>
+                <option value="2">Drama</option>
+                <option value="3">Terror</option>
+                <option value="4">Fantasia</option>
+                <option value="5">Musical</option>
+                <option value="6">Ciencia-Ficcion</option>
+                <option value="7">Documental</option>
+              </select>
               <textarea
                 value={Sinopsis}
                 className={`${botonesClass} h-20`}
