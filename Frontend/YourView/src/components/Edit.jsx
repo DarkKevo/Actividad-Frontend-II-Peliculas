@@ -3,7 +3,7 @@ import { FaEdit } from 'react-icons/fa';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-function Editar() {
+function Editar({id}) {
   const [Imagen, setImagen] = useState('');
   const [Titulo, setTitulo] = useState('');
   const [Genero, setGenero] = useState('');
@@ -61,8 +61,26 @@ function Editar() {
       .catch((error) => console.log(error));
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    EditMovie(
+      Genero,
+      Titulo,
+      Sinopsis,
+      Imagen,
+      Fecha_Publicacion,
+      Actores_Principales,
+      Directores,
+      Franquicia,
+      URL_pelicula,
+      data.token
+    );
+  };
+ 
   const [show, setShow] = useState('hidden');
   let botonesClass = 'w-full p-1 rounded-lg border-2 border-azul sm:w-[49%] sm:h-10 sm:text-lg';
+  
+  
   return (
     <div>
       <FaEdit
@@ -76,10 +94,10 @@ function Editar() {
         <div className='h-screen flex flex-col text-xl bg-salmon border-2 border-azul rounded-lg dark:bg-black md:min-h-[75%] md:max-h-[90%] md:w-3/4'>
           <div className='h-1/6 border-b-2 border-azul flex items-center p-3'>Agregar Pelicula</div>
           <div className='h-full'>
-            <form className='h-full flex flex-wrap items-center justify-between p-3 gap-1' method='post' required>
-              <input className={botonesClass} type='file' required />
-              <input className={botonesClass} type='text' placeholder='Nombre de la pelicula' required />
-              <select className={botonesClass} onChange={(e) => setGenero(e.target.value)} name='' id=''>
+            <form className='h-full flex flex-wrap items-center justify-between p-3 gap-1' onSubmit={handleSubmit} method='post' required>
+              <input className={botonesClass} onChange={(e)=>{setImagen(e.target.files[0])}} type='file' accept="image/*" required />
+              <input className={botonesClass} onChange={(e)=>{setTitulo(e.target.value)}} type='text' placeholder='Nombre de la pelicula' required />
+              <select className={botonesClass} onChange={(e) => {setGenero(e.target.value)}} name='' id=''>
                 <option value=''>Seleccione una categoria</option>
                 <option value='1'>Accion</option>
                 <option value='2'>Drama</option>
@@ -89,12 +107,12 @@ function Editar() {
                 <option value='6'>Ciencia-Ficcion</option>
                 <option value='7'>Documental</option>
               </select>
-              <textarea className={`${botonesClass} h-20`} cols='30' rows='10' placeholder='Sinopsis' required />
-              <input className={botonesClass} type='date' placeholder='Fecha de producción' required />
-              <input className={botonesClass} type='text' placeholder='Reparto principal' required />
-              <input className={botonesClass} type='text' placeholder='Directores' required />
-              <input className={botonesClass} type='text' placeholder='Franquicia' required />
-              <input className={botonesClass} type='url' name='Direccion de la pelicula' id='' placeholder='direccion URL' />
+              <textarea className={`${botonesClass} h-20`} onChange={(e)=>{setSinopsis(e.target.value)}} cols='30' rows='10' placeholder='Sinopsis' required />
+              <input className={botonesClass} type='date' onChange={(e)=>{setFecha_Publicacion(e.target.value)}} placeholder='Fecha de producción' required />
+              <input className={botonesClass} type='text' onChange={(e)=>{setActores_Principales(e.target.value)}} placeholder='Reparto principal' required />
+              <input className={botonesClass} type='text' onChange={(e)=>{setDirectores(e.target.value)}} placeholder='Directores' required />
+              <input className={botonesClass} type='text' onChange={(e)=>{setFranquicia(e.target.value)}} placeholder='Franquicia' required />
+              <input className={botonesClass} type='text' onChange={(e)=>{setURL_pelicula(e.target.value)}} name='Direccion de la pelicula' id='' placeholder='direccion URL' />
               <input className={`${botonesClass} text-gray-600 sm:w-[100%]`} type='submit' value='Agregar' />
             </form>
           </div>
