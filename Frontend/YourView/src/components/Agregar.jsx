@@ -133,6 +133,13 @@ function Agregar() {
                 placeholder="Nombre de la pelicula"
                 required
               />
+              {/* <select name="" id="">
+                <option value="">Accion</option>
+                <option value="">Drama</option>
+                <option value="">Terror</option>
+                <option value="">Accion</option>
+                <option value="">Accion</option>
+              </select> */}
               <input
                 value={Genero}
                 className={botonesClass}
