@@ -6,23 +6,12 @@ import { useEffect } from 'react';
 function Inicio() {
   const dispatch = useDispatch();
 
-  function Log_Out2() {
-    localStorage.removeItem('currentUser');
-  }
-
-  window.onbeforeunload = function () {
-    Log_Out2();
-    window.location.href = '/'
-  };
-
   useEffect(() => {
     dispatch(GetAllMovies());
   }, [dispatch]);
 
   if (localStorage.getItem('currentUser') === null) {
-    return (
-      <h2>No tienes una sesion</h2>
-    )
+    return <h2>No tienes una sesion</h2>;
   }
 
   let peliculas = useSelector((state) => state.pelicula.movies);

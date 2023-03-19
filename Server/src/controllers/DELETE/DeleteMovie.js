@@ -12,7 +12,7 @@ export const DeleteMovie = (req, res) => {
     multipleStatements: true,
   });
 
-  const { idPelicula } = req.params;
+  let idPelicula = req.params.idPelicula
 
   conexion.connect(function (err) {
     if (err) {

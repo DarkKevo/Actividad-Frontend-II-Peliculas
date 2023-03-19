@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaArrowAltCircleRight } from "react-icons/fa";
-function Cards({titulo, img,}) {
+function Cards({titulo, img, id}) {
 
   
   return (
