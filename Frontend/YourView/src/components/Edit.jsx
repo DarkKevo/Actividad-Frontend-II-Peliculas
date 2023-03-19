@@ -115,7 +115,7 @@ function Editar({ id }) {
       >
         <div className="h-screen flex flex-col text-xl bg-salmon border-2 border-azul rounded-lg dark:bg-black md:min-h-[75%] md:max-h-[90%] md:w-3/4">
           <div className="h-1/6 border-b-2 border-azul flex items-center p-3">
-            Agregar Pelicula
+            Editar Pelicula
           </div>
           <div className="h-full">
             <form
@@ -221,7 +221,7 @@ function Editar({ id }) {
               <input
                 className={`${botonesClass} text-gray-600 sm:w-[100%]`}
                 type="submit"
-                value="Agregar"
+                value="Editar"
               />
             </form>
           </div>
