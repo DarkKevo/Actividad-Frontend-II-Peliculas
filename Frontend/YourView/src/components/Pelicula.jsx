@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { GetAllMovies } from '../features/Peliculas/PeliculaSlice';
 import { useEffect } from 'react';
+import ReactPlayer from 'react-player';
 
 function Pelicula() {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ function Pelicula() {
       },
     };
     axios.delete(`http://localhost:3000/DeleteMovie/${id}`, config).then((response) => {
-      console.log(response)
+      console.log(response);
       if (response.data == true) {
         Swal.fire({
           position: 'top-center',
@@ -55,13 +56,46 @@ function Pelicula() {
     });
   }
 
+  let genero = '';
+
+  if (result[0].Genero == 1) {
+    genero = 'Accion';
+  }
+  if (result[0].Genero == 2) {
+    genero = 'Drama';
+  }
+  if (result[0].Genero == 3) {
+    genero = 'Terror';
+  }
+  if (result[0].Genero == 4) {
+    genero = 'Suspenso';
+  }
+  if (result[0].Genero == 5) {
+    genero = 'Comedia';
+  }
+  if (result[0].Genero == 6) {
+    genero = 'KPOP';
+  }
+  if (result[0].Genero == 7) {
+    genero = 'Fantansia';
+  }
+  if (result[0].Genero == 8) {
+    genero = 'Musical';
+  }
+  if (result[0].Genero == 9) {
+    genero = 'Ciencia Ficcion';
+  }
+  if (result[0].Genero == 10) {
+    genero = 'Documental';
+  }
+
   return (
     <div className='min-h-screen dark:text-gray-400 dark:bg-black dark:bg-opacity-90'>
       <div className='md:flex'>
         <div className='w-full md:flex md:flex-col md:items-start'>
           <img className='w-full h-full object-cover object-center col-start-1 row-start-1' src={`/src/Images/${result[0].Imagen}`} alt='' />
           <div className='flex justify-end p-2 gap-5 text-2xl'>
-            <Editar id={target} />
+            <Editar id={target.id} />
             <Link>
               <FaTrashAlt
                 onClick={() => {
@@ -75,7 +109,7 @@ function Pelicula() {
         <div className='w-full p-5 flex flex-col gap-3'>
           <h1 className='text-3xl'>{result[0].Titulo}</h1>
           <div className='text-xs flex justify-between'>
-            <h2>{result[0].Genero}</h2>
+            <h2>{genero}</h2>
             <h3>{result[0].Fecha_Publicacion}</h3>
           </div>
           <div className='text-sm'>
@@ -92,7 +126,10 @@ function Pelicula() {
           <p className='text-lg lg:text-xl'>{result[0].Sinopsis}</p>
         </div>
       </div>
-      <Reviews />
+      <div className='w-[80%] p-10 mx-auto'>
+        <ReactPlayer controls='true' width="100%" url={result[0].URL_pelicula} />
+      </div>
+      <Reviews id={target.id} comentary={result[0].Review} />
     </div>
   );
 }

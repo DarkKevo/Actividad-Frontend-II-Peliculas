@@ -77,7 +77,7 @@ INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Drama');
 INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Terror');
 INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Suspenso');
 INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Comedia');
-INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Drama');
+INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('KPOP');
 INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Fantasia');
 INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Musical');
 INSERT INTO `peliculasbd`.`genero` (`Genero`) VALUES ('Ciencia-Ficcion');
