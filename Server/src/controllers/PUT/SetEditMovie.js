@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 var imagen_name;
 
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, '../../Images'),
+  destination: path.join(__dirname, '../../../../Frontend/YourView/src/Images'),
   filename: (req, file, cb) => {
     imagen_name = `${Date.now()}-${file.originalname}`;
     cb(null, `${Date.now()}-${file.originalname}`);
