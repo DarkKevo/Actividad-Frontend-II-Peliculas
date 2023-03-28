@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import {useMutation} from 'react-query'
 function Registro() {
   const [user, setUser] = useState("");
   const [nombreU, setNombreU] = useState("");
@@ -16,41 +16,40 @@ function Registro() {
   const [iconA, setIconA] = useState("");
   const [developer_password, setDeveloper_password] = useState("");
   /* Funcion para Cliente */
-  function registerU(nombre, clave, icon) {
-    axios
-      .post("http://localhost:3000/CreateUser", {
-        nombre,
-        clave,
-        icon,
-      })
-      .then((response) => {
+  const {mutate:mutateU}= useMutation((data)=>
+  axios.post('http://localhost:3000/CreateUser',data),
+    {
+      onSuccess:(response)=>{
         console.log(response.data);
         localStorage.setItem(
           "currentUser",
           JSON.stringify({ nombre, clave, icon })
         );
         window.location.href = "/";
-      })
-      .catch((error) => console.log(error));
+      },
+      onError: (error) =>console.log(error),
+    }
+  )
+  function registerU(nombre, clave, icon) {
+    mutateU({nombre,clave,icon})
   }
   /* Funcion para Admin */
-  function registerA(nombre, clave, icon, developer_password) {
-    axios
-      .post("http://localhost:3000/CreateAdmin", {
-        nombre,
-        clave,
-        icon,
-        developer_password,
-      })
-      .then((response) => {
+  const {mutate:mutateA}= useMutation((data)=>
+  axios.post('http://localhost:3000/CreateAdminx',data),
+    {
+      onSuccess:(response)=>{
         console.log(response.data);
         localStorage.setItem(
           "currentUser",
           JSON.stringify({ nombre, clave, icon, developer_password })
         );
         window.location.href = "/";
-      })
-      .catch((error) => console.log(error));
+      },
+      onError: (error) =>console.log(error),
+    }
+  )
+  function registerA(nombre, clave, icon, developer_password) {
+    mutateA({nombre,clave,icon, developer_password})
   }
   /* SUBMIT */
   const handleSubmit = (e) => {

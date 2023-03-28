@@ -11,7 +11,8 @@ import Registro from "./components/Registro";
 import GenericNotFound from "./components/GenericNotFound";
 import "./App.css";
 /* CON QUERY */
-import { QueryClient, QueryClientProvider} from 'react-query'
+import { QueryClient, QueryClientProvider} from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import User from './Practica/User'
 //Crear cliente
 const queryClient= new QueryClient()
@@ -33,6 +34,7 @@ function App() {
           <Route path="*" element={<GenericNotFound />} />
         </Routes>
       </Provider>
+      <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
       <div
         onClick={() => setDarkToggle(!darkToggle)}

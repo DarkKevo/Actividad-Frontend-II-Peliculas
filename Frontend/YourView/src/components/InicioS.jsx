@@ -2,6 +2,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
+import {useMutation} from 'react-query'
 import axios from "axios";
 
 function InicioS() {
@@ -10,13 +11,10 @@ function InicioS() {
   const [clave, setClave] = useState("");
 
   //inicio sesion
-  function sesionU(nombre, clave) {
-    axios
-      .post("http://localhost:3000/LoginUser", {
-        nombre: nombre,
-        clave: clave,
-      })
-      .then((response) => {
+  const {mutate:mutateU}= useMutation((data)=>
+    axios.post('http://localhost:3000/LoginUser',data),
+    {
+      onSuccess: (response) => {
         if (response.data.status == false) {
           Swal.fire({
             position: "top-center",
@@ -38,17 +36,21 @@ function InicioS() {
           );
           window.location.href = "/inicio";
         }
-      })
-      .catch((error) => console.log(error));
+      },
+      onError: (error) => console.log(error),
+    }
+  )
+  function sesionU(nombre, clave) {
+    mutateU({nombre,clave}) 
   }
-  function sesionA(nombre, clave) {
-    axios
-      .post("http://localhost:3000/LoginAdmin", {
-        nombre: nombre,
-        clave: clave,
-      })
-      .then((response) => {
+  //Admin
+  const {mutate:mutateA}= useMutation((data)=>
+    axios.post('http://localhost:3000/LoginAdmin',data),
+    {
+      onSuccess: (response) => {
+        console.log('1')
         if (response.data.status == false) {
+          console.log('2')
           Swal.fire({
             position: "top-center",
             icon: "error",
@@ -57,6 +59,7 @@ function InicioS() {
             timer: 2000,
           });
         } else {
+          console.log('3')
           console.log(response.data);
           localStorage.setItem(
             "currentUser",
@@ -64,14 +67,17 @@ function InicioS() {
               nombre: response.data.nombre,
               icon: response.data.icon,
               token: response.data.token,
-              type: "admin",
+              type: "user",
             })
           );
           window.location.href = "/inicio";
         }
-      })
-
-      .catch((error) => console.log(error));
+      },
+      onError: (error) => console.log(error),
+    }
+  )
+  function sesionA(nombre, clave) {
+    mutateA({nombre,clave})
   }
   const handleSubmit = (e) => {
     e.preventDefault();
