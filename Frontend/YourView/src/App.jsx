@@ -10,14 +10,20 @@ import InicioS from "./components/InicioS";
 import Registro from "./components/Registro";
 import GenericNotFound from "./components/GenericNotFound";
 import "./App.css";
-
+/* CON QUERY */
+import { QueryClient, QueryClientProvider} from 'react-query'
+import User from './Practica/User'
+//Crear cliente
+const queryClient= new QueryClient()
 function App() {
   const [darkToggle, setDarkToggle] = useState(false);
 
   return (
     <div className={`min-h-scree font-Source ${darkToggle && "dark"}`}>
+      <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <Routes>
+        {/* <Route path="/" element={<User />} /> */}
           <Route path="/" element={<InicioS />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/" element={<Nav />}>
@@ -27,6 +33,7 @@ function App() {
           <Route path="*" element={<GenericNotFound />} />
         </Routes>
       </Provider>
+      </QueryClientProvider>
       <div
         onClick={() => setDarkToggle(!darkToggle)}
         className="w-16 h-16 p-3 fixed bottom-5 right-3 rounded-full flex items-center justify-center bg-azul transition-all duration-400 dark:bg-oscuro dark:border-2 border-salmon text-4xl text-white"
