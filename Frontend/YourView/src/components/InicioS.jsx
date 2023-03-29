@@ -2,7 +2,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
-import {useMutation} from 'react-query'
+import {useMutation} from 'react-query';
 import axios from "axios";
 
 function InicioS() {
