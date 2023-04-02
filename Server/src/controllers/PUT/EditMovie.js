@@ -66,7 +66,7 @@ export const EditMovie = (
     } else {
       console.log(results);
       try {
-        fs.unlinkSync(path.join(`./src/Images/${results[0].Imagen}`));
+        fs.unlinkSync(path.join(`../Frontend/YourView/src/Images/${results[0].Imagen}`));
         console.log('Archivo Eliminado');
         conexion.end();
         return true;

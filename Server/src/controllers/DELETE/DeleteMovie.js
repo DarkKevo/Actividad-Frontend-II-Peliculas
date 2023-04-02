@@ -12,7 +12,7 @@ export const DeleteMovie = (req, res) => {
     multipleStatements: true,
   });
 
-  const { idPelicula } = req.params
+  let idPelicula = req.params.idPelicula
 
   conexion.connect(function (err) {
     if (err) {
@@ -37,7 +37,7 @@ export const DeleteMovie = (req, res) => {
     } else {
       console.log(results);
       try {
-        fs.unlinkSync(path.join(`./src/Images/${results[0].Imagen}`));
+        fs.unlinkSync(path.join(`../Frontend/YourView/src/Images/${results[0].Imagen}`));
         console.log('Archivo Eliminado');
         conexion.end();
         return true;
@@ -53,12 +53,12 @@ export const DeleteMovie = (req, res) => {
     if (err) {
       console.log(err);
       conexion.end();
-      res.json({Message: 'error'})
+      res.send(false);
       return false;
     } else {
       console.log(results);
       conexion.end();
-      res.json({Message: 'Enviado'})
+      res.send(true);
       return true;
     }
   });

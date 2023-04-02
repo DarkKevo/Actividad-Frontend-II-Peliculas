@@ -10,6 +10,7 @@ import { CreateAdmin } from '../controllers/POST/CreateAdmin.js';
 import { LoginAdmin } from '../controllers/POST/LoginAdmin.js';
 import { NewComentary } from '../controllers/PUT/NewComentary.js';
 import { VerifyToken } from '../controllers/Security/VerifyToken.js';
+import { SingleMovie } from '../controllers/GET/GetSingle.js'
 
 export const routes = Express.Router();
 
@@ -402,3 +403,7 @@ routes.post('/LoginAdmin', LoginAdmin, (req, res) => {
 routes.put('/NewComentary', VerifyToken, NewComentary, (req, res) => {
   //Comentarios
 });
+
+routes.get('/Single/:id', SingleMovie, (req, res) => {
+  //Unico
+})
